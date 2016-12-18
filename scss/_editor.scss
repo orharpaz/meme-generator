@@ -1,0 +1,64 @@
+.meme-editor {
+  height: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+  visibility: hidden;
+  margin-top: 50px;
+  text-align: center;
+  transition: height 0.5s;
+  background-color: lightseagreen;
+  border-radius: 20px;
+}
+  
+.canvas{
+  width: 50%;
+  height: auto;
+}
+
+.text-editor {
+  width: 50%;
+  height: auto;
+  }
+
+.text-editor button {
+  border-radius: 20px;
+  font-family: 'Playfair';
+  background-color: black;
+  color: white;
+}
+
+.text-editor input {
+  background-color: black;
+  color:white;
+}
+
+// .canvas {
+//   width: 100%;
+
+// }
+
+.top-text {
+  margin-top: 50px;
+}
+
+.bottom-text {
+  margin-top: 50px;
+}
+
+.download {
+  margin-top: 20px;
+}
+
+
+
+@media screen and (max-width:750px){
+
+
+.canvas{
+  width: 100%;
+}
+
+.text-editor {
+  width: 100%;
+  }
+}

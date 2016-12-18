@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="dist/style.css">
+</head>
+
+<body onload="appInit()">
+<!--the main container-->
+    <main class="main">
+        <!--the navigation bar-->
+        <a name="gallery"></a>
+        <ul class="main-nav" id="nav">
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="icon">
+                <a href="javascript:void(0);" onclick="burgerMenu()">&#9776;</a>
+            </li>
+        </ul>
+
+
+        <!--the container that holds meme creator-->
+        <section class="meme-editor flex flex-wrap">
+
+            <!--the chosen picture-->
+                    <canvas class="canvas img-resposive">no image</canvas>
+
+            <!--the text editor-->
+            <div class="text-editor">
+                <div class="top-text">
+                    <input class="meme-input top-text-input" type="text" placeholder="Top Text"><br>
+                    <select oninput="changeFont('top', this.value)">
+                        <option value="impact">Impact</option>
+                        <option value="ariel">Ariel</option>
+                        <option value="playfair">playfair</option>
+                    </select>
+                    <input type="color" oninput="changeFontColor('top', this.value)" value="#ffffff">
+                    <button onclick="changeFontSize('top', 4)">+</button>
+                    <button onclick="changeFontSize('top', -4)">-</button>
+                    <button onclick="alignText('top', 'left', 5)">left</button>
+                    <button onclick="alignText('top', 'center', gCanvas.width / 2)">center</button>
+                    <button onclick="alignText('top', 'right', gCanvas.width - 5)">right</button>
+                </div>
+                <div class="bottom-text">
+                    <input class="meme-input bottom-text-input" type="text" placeholder="Bottom Text"><br>
+                    <select oninput="changeFont('bottom', this.value)">
+                        <option value="impact">Impact</option>
+                        <option value="ariel">Ariel</option>
+                        <option value="playfair">playfair</option>
+                    </select>
+                    <input type="color" oninput="changeFontColor('bottom', this.value)" value="#ffffff">
+                    <button onclick="changeFontSize('bottom', 4)">+</button>
+                    <button onclick="changeFontSize('bottom', -4)">-</button>
+                    <button onclick="alignText('bottom', 'left', 5)">left</button>
+                    <button onclick="alignText('bottom', 'center', gCanvas.width / 2)">center</button>
+                    <button onclick="alignText('bottom', 'right', gCanvas.width - 5)">right</button>
+                </div>
+                <div class="download">
+                    <a href="" onclick="downloadImg(this)">
+                        <button>Click to download Meme!</button>
+                    </a>
+                </div>
+                <div>
+                    <!--<button onclick="backToGallery()">Back To Gallery</button>-->
+                </div>
+            </div>
+        </section>
+        <!--the container that holds the gallery-->
+        <section class="gallery">
+            <div class="innerGallery flex justify-center flex-wrap"></div>
+            <div class="search flex align-center">
+                <form id= "search"> 
+                    <input type= "text" placeholder="type keyword"> 
+                    <input type="submit" value="search" onclick="filterImg();return false;">  
+                </form> </div>
+
+        </section>
+
+        <!--popular words-->
+        <!--<section class="popular">
+            keyWords
+        </section>-->
+        
+        
+        <!--about author section-->
+        <section class="about">
+            <a name="about"></a>
+            <article class= "flex space-around">
+                <div class= "hex">
+                    <div class="hexagonAb ogen">
+                     <div class="hexTopAb"></div>
+                     <div class="hexBottomAb"></div>                
+                     </div>
+                </div>
+                <div class="p1"><h1> Ogen Ben Dor </h1> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere eum obcaecati corporis maiores, id rem quos! Pariatur cupiditate ducimus a quod, natus, beatae. Quaerat possimus, placeat sequi. Fugiat quam, delectus.</p> </div>
+                <div class= "tumbrow">
+                    <div class=" tumb facebook"><a href= "#"><img src = "assets/img/facebook_opt.png"></a></div>
+                    <div class="tumb twitter"><a href= "#"><img src = "assets/img/twitter_opt.jpg"></a></div>
+                    <div class="tumb linkdin"><a href= "#"><img src = "assets/img/linkdin_opt.png"></a></div>
+                </div>
+            </article>
+
+            <article class= "flex space-around">
+                <div class="p1 p2"><h1> Or Harpaz </h1> <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, aut, reprehenderit. Minus, modi. Consectetur, asperiores, excepturi. Recusandae fugit, excepturi neque molestias delectus vel vero. Excepturi quo facere officia. Consequatur, architecto!</p> </div>
+                <div class= "hex">
+                    <div class="hexagonAb or">
+                        <div class="hexTopAb"></div>
+                        <div class="hexBottomAb"></div>
+                    </div>
+                </div>
+                <div class= "tumbrow">
+                    <div class=" tumb facebook"><a href= "#"><img src = "assets/img/facebook_opt.png"></a></div>
+                    <div class="tumb twitter"><a href= "#"><img src = "assets/img/twitter_opt.jpg"></a></div>
+                    <div class="tumb linkdin"><a href= "#"><img src = "assets/img/linkdin_opt.png"></a></div>
+                </div>                   
+            
+               
+            </article>
+            
+        </section>
+
+        <!--keep in touch-->
+        <section class="flex flex-wrap">
+            <a name="getintouch"></a>
+            <div class="form-input">
+                <h1 class="getIntouch"> get in touch! </h1>
+                <h4 class="getIntouch">In order to get in touch use the form below </h4>
+                <form id= "contact" class ="flex column form-group form-control">
+                    <input type="text" class= "colorForm" placeholder="Name">
+                    <input type="email" class= "colorForm" placeholder="E-mail" name="email">
+                    <input type="text" class= "colorForm" placeholder="Subject">
+                    <input type="text" class="textForm colorForm" placeholder="Text">
+                    <input type="submit" class="subButton" value="Send" onclick="sendLocalStorage();return false;">
+                </form>
+            </div>
+            <div class="form-info flex column justify-center">
+                <div class= "margin-top">Lorem ipsum dolor sit amet, adhuc commodo ut his,
+                     vim vocibus mnesarchum efficiantur id. Eum et errem consequat. 
+                     Duis nostrud ei quo, odio persius in eum. Movet nonumes ex usu, eam bonorum fabulas civibus et.</div>
+                <div class="flex padding2">
+                    <div><img src = "assets/img/map.png"></div>
+                    <div class= "padding">nowhere st. somewhere, dushbegistan</div>
+                </div> 
+                <div flex class= "flex padding2">
+                    <div><img src = "assets/img/phone.png"></div>
+                    <div>+3345678635</div>
+                </div> 
+                <div flex class="flex padding2">
+                    <div><img src = "assets/img/email.png"></div>
+                    <!--<div>whatwhat@yahoo.com</div>-->
+                </div>                 
+            </div>
+        </section>
+        <!--the footer-->
+        <footer>
+            all rights reserved to ogen & or inc.
+        </footer>
+        
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+
+
+

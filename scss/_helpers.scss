@@ -1,0 +1,73 @@
+.clean-list {
+  list-style: none;
+}
+
+.img-responsive {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Breakpoint mixins */
+
+@mixin for-mobile-only {
+  @media (max-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+/*----------  Flex Helpers  ----------*/
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+.align-center {
+  align-items: center;
+}
+
+
+.flex-end {
+align-items: flex-end;
+}
+
+.flex-start {
+  align-items: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.padding {
+  padding: 5px;
+}
+
+.padding2 {
+  padding: 10px;
+  margin: 10px;
+}
+
+.float-left {
+  float: left;
+}
